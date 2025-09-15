@@ -1,0 +1,84 @@
+domain:
+  n_steps: 40
+  issues:
+    - name: price
+      kind: range
+      min: 0
+      max: 20
+    - name: quantity
+      kind: range
+      min: 1
+      max: 50
+    - name: delivery
+      kind: range
+      min: 0
+      max: 10
+roles:
+  buyer:
+    utility:
+      price:
+        kind: affine
+        weight: -1.0
+        bias: 20.0
+      quantity:
+        kind: linear
+        weight: 0.3
+      delivery:
+        kind: linear
+        weight: 1.0
+  seller:
+    utility:
+      price:
+        kind: linear
+        weight: 1.0
+      quantity:
+        kind: linear
+        weight: 0.2
+      delivery:
+        kind: affine
+        weight: -0.5
+        bias: 5.0
+opponents:
+  - role: buyer
+    type: aspiration
+    weight: 1.0
+    params:
+      name: baseline_buyer
+  - role: seller
+    type: time
+    weight: 1.0
+    params:
+      name: baseline_seller
+policy:
+  learning_rate: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_coef: 0.2
+  ent_coef: 0.01
+  value_coef: 0.5
+  max_grad_norm: 1.0
+  update_epochs: 4
+  minibatch_size: 64
+  rollout_size: 256
+  hidden_size: 128
+training:
+  total_episodes: 100
+  eval_interval: 20
+  log_interval: 10
+wealth:
+  buyer:
+    initial: 1.0
+    time_cost: 0.01
+    ruin_threshold: 0.1
+    ruin_penalty: -5.0
+  seller:
+    initial: 1.0
+    time_cost: 0.01
+    ruin_threshold: 0.1
+    ruin_penalty: -5.0
+economy:
+  value_per_unit: 0.3
+  delivery_bonus: 0.05
+  delivery_reference: 10
+  seller_cost: 0.1
+  seller_delivery_cost: 0.02
