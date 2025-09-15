@@ -1,0 +1,1 @@
+"""Negotiator config package."""
