@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ergodic-negotiator"
+version = "0.1.0"
+description = "Reinforcement learning multi-agent negotiation simulator with ergodic metrics"
+authors = [{name = "Research Automation"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "negmas>=0.11,<0.13",
+    "numpy>=1.24",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
