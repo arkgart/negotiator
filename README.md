@@ -1,4 +1,4 @@
-# Ergodic Negotiation Simulator
+# BlueChips Labs: Ergodic Negotiation Simulator
 
 This repository contains a reinforcement-learning-ready multi-agent negotiation simulator built on top of [NegMAS](https://negmas.readthedocs.io/). The focus is on **ergodic**, time-average decision making: agents optimise the logarithmic growth of their wealth across negotiation rounds rather than expected utility of individual deals.
 
@@ -76,4 +76,4 @@ pytest
 
 ## Citation
 
-If you use this simulator in academic work, please cite the repository and the NegMAS project.
+If you use this simulator in academic or professional work, please cite the repository and the NegMAS project.
