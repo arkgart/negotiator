@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ergodic-negotiator"
+version = "0.1.0"
+description = "Ergodic multi-agent negotiation simulator on top of NegMAS"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "negmas>=0.11.3",
+    "gymnasium>=1.2.0",
+    "numpy>=1.24",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
